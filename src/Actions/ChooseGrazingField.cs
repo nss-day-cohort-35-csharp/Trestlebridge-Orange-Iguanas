@@ -14,7 +14,7 @@ namespace Trestlebridge.Actions
 
             for (int i = 0; i < farm.GrazingFields.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. Grazing Field");
+                Console.WriteLine($"{i + 1}. Grazing Field ({farm.GrazingFields[i].AnimalCount} {(farm.GrazingFields[i].AnimalCount == 1 ? "animal" : "animals")})");
             }
 
             Console.WriteLine();
