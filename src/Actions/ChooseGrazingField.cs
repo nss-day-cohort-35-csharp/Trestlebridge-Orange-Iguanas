@@ -8,7 +8,7 @@ namespace Trestlebridge.Actions
 {
     public class ChooseGrazingField
     {
-        public static void CollectInput(Farm farm, IGrazing animal)
+        public static void CollectInput(Farm farm, IGrazing animal, bool clear = true)
         {
             Utils.Clear();
 
@@ -24,8 +24,25 @@ namespace Trestlebridge.Actions
 
             Console.Write("> ");
             int choice = Int32.Parse(Console.ReadLine());
+            choice = choice - 1;
+            int currentListCount = farm.GrazingFields[choice].AnimalCount;
+            int availableSpace = Convert.ToInt32(farm.GrazingFields[choice].Capacity) - currentListCount;
+            int evaluatedAvailableSpace = Math.Sign(availableSpace);
+            if (evaluatedAvailableSpace == 1)
+            {
+                farm.GrazingFields[choice].AddResource(animal);
+            }
+            else
+            {
+                // Console.Clear();
+                Console.WriteLine("Facility is full. Please choose another facility.");
+                Console.ReadLine();
 
-            farm.GrazingFields[choice].AddResource(animal);
+                ChooseGrazingField.CollectInput(farm, animal, false);
+            }
+
+
+            // farm.GrazingFields[choice].AddResource(animal);
 
             /*
                 Couldn't get this to work. Can you?
