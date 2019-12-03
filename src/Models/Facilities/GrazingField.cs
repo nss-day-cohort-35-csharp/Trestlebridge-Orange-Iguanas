@@ -8,11 +8,18 @@ namespace Trestlebridge.Models.Facilities
 {
     public class GrazingField : IFacility<IGrazing>
     {
-        private int _capacity = 50;
+        private int _capacity = 20;
         private Guid _id = Guid.NewGuid();
 
         private List<IGrazing> _animals = new List<IGrazing>();
 
+        public int AnimalCount
+        {
+            get
+            {
+                return _animals.Count;
+            }
+        }
         public double Capacity
         {
             get
@@ -23,16 +30,25 @@ namespace Trestlebridge.Models.Facilities
 
         public void AddResource(IGrazing animal)
         {
-            // TODO: implement this...
-            throw new NotImplementedException();
+            _animals.Add(animal);
+            // throw new NotImplementedException();
         }
 
         public void AddResource(List<IGrazing> animals)
         {
-            // TODO: implement this...
-            throw new NotImplementedException();
+            int incomingListCount = animals.Count;
+            int currentListCount = _animals.Count;
+            int availableSpace = _capacity - incomingListCount + currentListCount;
+            int evaluatedAvailableSpace = Math.Sign(availableSpace);
+            if (evaluatedAvailableSpace == 1)
+            {
+                animals.ForEach(a => _animals.Add(a));
+            }
+            else
+            {
+                Console.WriteLine("at max Capacity");
+            }
         }
-
         public override string ToString()
         {
             StringBuilder output = new StringBuilder();
