@@ -11,6 +11,7 @@ namespace Trestlebridge.Actions
         {
             Console.WriteLine("1. Grazing field");
             Console.WriteLine("2. Plowed field");
+            Console.WriteLine("3. Chicken House");
 
             Console.WriteLine();
             Console.WriteLine("Choose what you want to create");
@@ -24,7 +25,13 @@ namespace Trestlebridge.Actions
                     Console.WriteLine("Grazing Field Created!!!!!");
                     Console.WriteLine("Press Return to go back to the Main Menu");
                     Console.ReadLine();
+                    break;
 
+                case 2:
+                    farm.AddChickenHouse(new ChickenHouse());
+                    Console.WriteLine("Chicken House(coop) built!!!");
+                    Console.WriteLine("Press Return to go back to the Main Menu");
+                    Console.ReadLine();
                     break;
                 default:
                     break;
