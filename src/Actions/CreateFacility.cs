@@ -27,7 +27,16 @@ namespace Trestlebridge.Actions
                     Console.ReadLine();
                     break;
 
-                case 2:
+                //this is where plowed field will go
+
+                // case 2:
+                // farm.AddGrazingField(new GrazingField());
+                // Console.WriteLine("Grazing Field Created!!!!!");
+                // Console.WriteLine("Press Return to go back to the Main Menu");
+                // Console.ReadLine();
+                // break;
+
+                case 3:
                     farm.AddChickenHouse(new ChickenHouse());
                     Console.WriteLine("Chicken House(coop) built!!!");
                     Console.WriteLine("Press Return to go back to the Main Menu");
