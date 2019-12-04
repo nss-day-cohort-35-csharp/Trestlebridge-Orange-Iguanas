@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Trestlebridge.Interfaces;
 
@@ -24,6 +25,14 @@ namespace Trestlebridge.Models.Facilities
             get
             {
                 return _capacity;
+            }
+        }
+
+        public double GetCount
+        {
+            get
+            {
+                return _seeds.Count;
             }
         }
 
@@ -57,6 +66,12 @@ namespace Trestlebridge.Models.Facilities
             this._seeds.ForEach(a => output.Append($"   {a}\n"));
 
             return output.ToString();
+        }
+
+        public void listSeeds()
+        {
+            var sesameSortedList = _seeds.Where(sesame => sesame.returnSeedType == "Sesame");
+            Console.Write($"Sesame: {sesameSortedList.Count()}");
         }
     }
 }
