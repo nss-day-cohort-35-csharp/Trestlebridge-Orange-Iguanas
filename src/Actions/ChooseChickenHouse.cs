@@ -15,8 +15,6 @@ namespace Trestlebridge.Actions
             if (farm.ChickenHouses.Count < 1)
             {
                 Console.WriteLine("Facility doesn't exist for selected animal.");
-                Console.ReadLine();
-                // Console.WriteLine("\n\n\n");
                 Console.WriteLine("Press return key to go back to main menu.");
                 Console.ReadLine();
                 Utils.Clear();
