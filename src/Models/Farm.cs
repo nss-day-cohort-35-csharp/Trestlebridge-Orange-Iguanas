@@ -14,6 +14,7 @@ namespace Trestlebridge.Models
         public List<DuckHouse> DuckHouses { get; } = new List<DuckHouse>();
 
         public List<PlowedField> PlowedFields { get; } = new List<PlowedField>();
+        public List<NaturalField> NaturalFields { get; } = new List<NaturalField>();
 
         /*
             This method must specify the correct product interface of the
@@ -51,6 +52,10 @@ namespace Trestlebridge.Models
         {
             PlowedFields.Add(plowField);
         }
+        public void AddNaturalField(NaturalField naturalField)
+        {
+            NaturalFields.Add(naturalField);
+        }
 
         public override string ToString()
         {
@@ -63,6 +68,8 @@ namespace Trestlebridge.Models
             DuckHouses.ForEach(dh => report.Append(dh));
 
             PlowedFields.ForEach(pf => report.Append(pf));
+
+            NaturalFields.ForEach(nf => report.Append(nf));
 
             return report.ToString();
         }
