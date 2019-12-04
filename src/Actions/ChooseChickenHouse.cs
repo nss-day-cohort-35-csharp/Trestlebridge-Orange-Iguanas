@@ -10,20 +10,23 @@ namespace Trestlebridge.Actions
     {
         public static void CollectInput(Farm farm, IPecking chicken, bool clear = true)
         {
-            Utils.Clear();
-
-            if (farm.ChickenHouses.Count < 1)
+            bool allFull = farm.ChickenHouses.All(field => field.GetCount == field.Capacity);
+            if (allFull)
             {
-                Console.WriteLine("Facility doesn't exist for selected animal.");
-                Console.WriteLine("Press return key to go back to main menu.");
+                Console.WriteLine("No facilities available, press enter to continue");
                 Console.ReadLine();
-                Utils.Clear();
+
             }
-            else
+            while (!allFull)
             {
+
+                Utils.Clear();
+
                 for (int i = 0; i < farm.ChickenHouses.Count; i++)
                 {
-                    Console.WriteLine($"{i + 1}. Chicken House ({farm.ChickenHouses[i].AnimalCount} {(farm.ChickenHouses[i].AnimalCount == 1 ? "chicken" : "chickens")})");
+                    Console.Write($"{i + 1}. Chicken House: Total: {farm.ChickenHouses[i].GetCount} of {farm.ChickenHouses[i].Capacity} (");
+                    farm.ChickenHouses[i].listAnimals();
+                    Console.WriteLine(")");
                 }
 
                 Console.WriteLine();
@@ -32,34 +35,31 @@ namespace Trestlebridge.Actions
                 Console.WriteLine($"Place the animal where?");
 
                 Console.Write("> ");
-                int choice = Int32.Parse(Console.ReadLine());
-                choice = choice - 1;
-                int currentListCount = farm.ChickenHouses[choice].AnimalCount;
-                int availableSpace = Convert.ToInt32(farm.ChickenHouses[choice].Capacity) - currentListCount;
-                int evaluatedAvailableSpace = Math.Sign(availableSpace);
-                if (evaluatedAvailableSpace == 1)
+                try
                 {
-                    farm.ChickenHouses[choice].AddResource(chicken);
+                    int choice = Int32.Parse(Console.ReadLine());
+                    if (farm.ChickenHouses[choice - 1].GetCount < farm.ChickenHouses[choice - 1].Capacity)
+                    {
+                        farm.ChickenHouses[choice - 1].AddResource(chicken);
+                        break;
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("This facility is full, please choose another one");
+                        Console.WriteLine("Press enter to continue");
+                        Console.ReadLine();
+
+                    }
+
                 }
-
-                else
+                catch (Exception)
                 {
-                    // Console.Clear();
-                    Console.WriteLine("Facility is full. Please choose another facility.");
+                    Console.WriteLine("Wrong input, please chose another.");
+                    Console.WriteLine("Press enter to continue");
                     Console.ReadLine();
-
-                    ChooseChickenHouse.CollectInput(farm, chicken, false);
                 }
             }
-
-            // farm.GrazingFields[choice].AddResource(animal);
-
-            /*
-                Couldn't get this to work. Can you?
-                Stretch goal. Only if the app is fully functional.
-             */
-            // farm.PurchaseResource<IGrazing>(animal, choice);
-
         }
     }
 }
