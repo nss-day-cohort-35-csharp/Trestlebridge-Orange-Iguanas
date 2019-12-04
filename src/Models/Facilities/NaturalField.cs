@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Trestlebridge.Interfaces;
+using System.Linq;
 
 namespace Trestlebridge.Models.Facilities
 {
@@ -57,6 +58,19 @@ namespace Trestlebridge.Models.Facilities
             this._seeds.ForEach(a => output.Append($"   {a}\n"));
 
             return output.ToString();
+        }
+
+        public void listSeeds()
+        {
+            // var sunflowerSortedList = _seeds.Where(sun => sun.returnSeedType == "Sunflower");
+            // Console.Write($"Sunflowers: {sunflowerSortedList.Count()}");
+
+            // var wildflowerSortedList = _seeds.Where(wild => wild.returnSeedType == "Wildflower");
+            // Console.Write($" Wildflowers: {wildflowerSortedList.Count()}");
+
+            var sesameSortedList = _seeds.Where(sesame => sesame.returnSeedType == "Sesame");
+            Console.Write($"Sesame: {sesameSortedList.Count()}");
+
         }
     }
 }
