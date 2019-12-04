@@ -1,17 +1,25 @@
 using System;
-using System.Text;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Trestlebridge.Interfaces;
-
 
 namespace Trestlebridge.Models.Facilities
 {
     public class GrazingField : IFacility<IGrazing>
     {
-        private int _capacity = 20;
+        private int _capacity = 1;
         private Guid _id = Guid.NewGuid();
 
         private List<IGrazing> _animals = new List<IGrazing>();
+
+        public double GetCount
+        {
+            get
+            {
+                return _animals.Count;
+            }
+        }
 
         public int AnimalCount
         {
@@ -58,6 +66,24 @@ namespace Trestlebridge.Models.Facilities
             this._animals.ForEach(a => output.Append($"   {a}\n"));
 
             return output.ToString();
+        }
+
+        public void listAnimals()
+        {
+            var cowSortedList = _animals.Where(cow => cow.returnAnimalType == "Cow");
+            Console.Write($"Cows: {cowSortedList.Count()}");
+
+            var sheepSortedList = _animals.Where(sheep => sheep.returnAnimalType == "Sheep");
+            Console.Write($" Sheep: {sheepSortedList.Count()}");
+
+            var ostrichSortedList = _animals.Where(ostrich => ostrich.returnAnimalType == "Ostrich");
+            Console.Write($" Ostriches: {ostrichSortedList.Count()}");
+
+            var goatSortedList = _animals.Where(goat => goat.returnAnimalType == "Goat");
+            Console.Write($" Goats: {goatSortedList.Count()}");
+
+            var pigSortedList = _animals.Where(pig => pig.returnAnimalType == "Pig");
+            Console.Write($" Pigs: {pigSortedList.Count()}");
         }
     }
 }
