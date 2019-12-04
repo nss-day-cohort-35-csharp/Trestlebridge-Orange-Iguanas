@@ -10,55 +10,62 @@ namespace Trestlebridge.Actions
     {
         public static void CollectInput(Farm farm, IQuacking duck, bool clear = true)
         {
-            Utils.Clear();
-            if (farm.DuckHouses.Count < 1)
+            bool allFull = farm.DuckHouses.All(field => field.AnimalCount == field.Capacity);
+            if (allFull)
             {
-                Console.WriteLine("Facility doesn't exist for selected animal.");
-                Console.WriteLine("Press return key to go back to main menu.");
+                Console.WriteLine("No facilities available, press enter to continue");
                 Console.ReadLine();
-                Utils.Clear();
             }
-            else
+            while (!allFull)
             {
-
-                for (int i = 0; i < farm.DuckHouses.Count; i++)
+                Utils.Clear();
+                if (farm.DuckHouses.Count < 1)
                 {
-                    Console.WriteLine($"{i + 1}. Duck House ({farm.DuckHouses[i].AnimalCount} {(farm.DuckHouses[i].AnimalCount == 1 ? "duck" : "ducks")})");
-                }
-
-                Console.WriteLine();
-
-                // How can I output the type of animal chosen here?
-                Console.WriteLine($"Place the animal where?");
-
-                Console.Write("> ");
-                int choice = Int32.Parse(Console.ReadLine());
-                choice = choice - 1;
-                int currentListCount = farm.DuckHouses[choice].AnimalCount;
-                int availableSpace = Convert.ToInt32(farm.DuckHouses[choice].Capacity) - currentListCount;
-                int evaluatedAvailableSpace = Math.Sign(availableSpace);
-                if (evaluatedAvailableSpace == 1)
-                {
-                    farm.DuckHouses[choice].AddResource(duck);
+                    Console.WriteLine("Facility doesn't exist for selected animal.");
+                    Console.WriteLine("Press return key to go back to main menu.");
+                    Console.ReadLine();
+                    Utils.Clear();
                 }
                 else
                 {
-                    // Console.Clear();
-                    Console.WriteLine("Facility is full. Please choose another facility.");
-                    Console.ReadLine();
 
-                    ChooseDuckHouse.CollectInput(farm, duck, false);
+                    for (int i = 0; i < farm.DuckHouses.Count; i++)
+                    {
+                        Console.Write($"{i + 1}. Duck House: Total: {farm.DuckHouses[i].AnimalCount} of {farm.DuckHouses[i].Capacity} (");
+                        farm.DuckHouses[i].listDucks();
+                        Console.WriteLine(")");
+                    }
+
+                    Console.WriteLine();
+
+                    // How can I output the type of animal chosen here?
+                    Console.WriteLine($"Place the animal where?");
+
+                    Console.Write("> ");
+
+                    try
+                    {
+                        int choice = Int32.Parse(Console.ReadLine());
+                        if (farm.DuckHouses[choice - 1].AnimalCount < farm.DuckHouses[choice - 1].Capacity)
+                        {
+                            farm.DuckHouses[choice - 1].AddResource(duck);
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("This facility is full, please choose another one");
+                            Console.WriteLine("Press enter to continue");
+                            Console.ReadLine();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Wrong input, please chose another.");
+                        Console.WriteLine("Press enter to continue");
+                        Console.ReadLine();
+                    }
                 }
             }
-
-            // farm.GrazingFields[choice].AddResource(animal);
-
-            /*
-                Couldn't get this to work. Can you?
-                Stretch goal. Only if the app is fully functional.
-             */
-            // farm.PurchaseResource<IGrazing>(animal, choice);
-
         }
     }
 }
