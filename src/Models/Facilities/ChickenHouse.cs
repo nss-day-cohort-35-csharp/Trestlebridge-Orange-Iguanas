@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using Trestlebridge.Interfaces;
 
 namespace Trestlebridge.Models.Facilities
@@ -12,6 +13,14 @@ namespace Trestlebridge.Models.Facilities
 
         private List<IPecking> _chickens = new List<IPecking>();
 
+
+        public double GetCount
+        {
+            get
+            {
+                return _chickens.Count;
+            }
+        }
         public int AnimalCount
         {
             get
@@ -57,6 +66,12 @@ namespace Trestlebridge.Models.Facilities
             this._chickens.ForEach(a => output.Append($"   {a}\n"));
 
             return output.ToString();
+        }
+
+        public void listAnimals()
+        {
+            var chickenSortedList = _chickens.Where(chicken => chicken.returnAnimalType == "Chicken");
+            Console.Write($"Chicken: {chickenSortedList.Count()}");
         }
     }
 }
