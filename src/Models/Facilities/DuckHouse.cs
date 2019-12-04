@@ -1,8 +1,8 @@
 using System;
-using System.Text;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Trestlebridge.Interfaces;
-
 
 namespace Trestlebridge.Models.Facilities
 {
@@ -58,6 +58,11 @@ namespace Trestlebridge.Models.Facilities
             this._ducks.ForEach(a => output.Append($"   {a}\n"));
 
             return output.ToString();
+        }
+        public void listDucks()
+        {
+            var duckSortedList = _ducks.Where(duck => duck.returnDuckType == "Duck");
+            Console.Write($"Ducks: {duckSortedList.Count()}");
         }
     }
 }

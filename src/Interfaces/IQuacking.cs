@@ -4,5 +4,6 @@ namespace Trestlebridge.Interfaces
     {
         double GrainPerDay { get; set; }
         void Quack();
+        string returnDuckType { get; }
     }
 }
