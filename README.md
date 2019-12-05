@@ -10,13 +10,13 @@ We have met with other growers and ranchers in the Middle Tennessee area and hav
 
 ## Group Members
 
-Seth Oakley[github.com](https://github.com/sethoak)
+Seth Oakley  [github.com](https://github.com/sethoak)
 
-Lauren Maxwell[github.com](https://github.com/laurenelizamax)
+Lauren Maxwell  [github.com](https://github.com/laurenelizamax)
 
-David Cornish[github.com](https://github.com/dcornish84)
+David Cornish  [github.com](https://github.com/dcornish84)
 
-Mark McCann[github.com](ttps://github.com/mjmccann90)
+Mark McCann  [github.com](https://github.com/mjmccann90)
 
 ## Setup: Please follow these steps
 
