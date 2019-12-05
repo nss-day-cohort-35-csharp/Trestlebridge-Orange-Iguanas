@@ -8,6 +8,7 @@ namespace Trestlebridge.Models
 {
     public class Farm
     {
+        //creating Lists for when a user created a particular facility
         public List<GrazingField> GrazingFields { get; } = new List<GrazingField>();
 
         public List<ChickenHouse> ChickenHouses { get; } = new List<ChickenHouse>();
@@ -20,6 +21,9 @@ namespace Trestlebridge.Models
             This method must specify the correct product interface of the
             resource being purchased.
          */
+
+        //IResource contains string Type { get; }
+        //when we want to place the appropiate selection in the facility, this adds that resource to the selected field
         public void PurchaseResource<T>(IResource resource, int index)
         {
             Console.WriteLine(typeof(T).ToString());
@@ -33,6 +37,7 @@ namespace Trestlebridge.Models
             }
         }
 
+        //setting the Add to the appropiate List 
         public void AddGrazingField(GrazingField field)
         {
             GrazingFields.Add(field);
@@ -57,6 +62,7 @@ namespace Trestlebridge.Models
             NaturalFields.Add(naturalField);
         }
 
+        //when we look at the Farm status report, this is where it's grabbing the created instances of the facilities
         public override string ToString()
         {
             StringBuilder report = new StringBuilder();

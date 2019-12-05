@@ -18,6 +18,7 @@ namespace Trestlebridge.Actions
             Console.WriteLine("Choose what you want to create");
             Console.Write("> ");
 
+            //this is where we are stating the selections and what/where they will be going to
             string input = Console.ReadLine();
             switch (Int32.Parse(input))
             {
