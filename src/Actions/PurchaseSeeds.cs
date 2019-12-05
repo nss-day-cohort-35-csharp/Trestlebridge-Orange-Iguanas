@@ -18,6 +18,7 @@ namespace Trestlebridge.Actions
             Console.Write("> ");
             string choice = Console.ReadLine();
 
+            //depending on the input selected, we determine where the selection goes in the appropiate field. If one doesn't exist it will state that.
             switch (Int32.Parse(choice))
             {
                 case 1:

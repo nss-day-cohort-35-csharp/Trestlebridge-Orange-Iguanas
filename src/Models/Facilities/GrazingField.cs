@@ -68,6 +68,7 @@ namespace Trestlebridge.Models.Facilities
             return output.ToString();
         }
 
+        //stipulating that these animals are belonging to this GrazingField
         public void listAnimals()
         {
             var cowSortedList = _animals.Where(cow => cow.returnAnimalType == "Cow");
