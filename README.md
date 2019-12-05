@@ -6,7 +6,7 @@ The goal of this group project, was to learn. We chose to have fun with this cod
 
 We have decided to connect with the earth again and abandon our reliance on technology and urban vices. We have built a business plan, presented it to a bank, and have secured \$5 million to purchase an abandoned farm and produce high quality, responsibly grown and raised meat, seed, eggs, feathers and compost.
 
-We have met with other growers and ranchers in the Middle Tennessee area and have decided on the animals and plants below to build our farm. For each resource, we found where it will be stored on the farm, what is produces when processed, and how much it produces.
+We have met with other growers and ranchers in the Middle Tennessee area and have decided on the animals and plants below to build our farm. For each resource, we found where it will be stored on the farm, what is produced, when it is processed, and how much it produces.
 
 ## Group Members
 
