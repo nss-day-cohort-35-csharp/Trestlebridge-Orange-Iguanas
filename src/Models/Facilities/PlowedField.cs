@@ -72,6 +72,9 @@ namespace Trestlebridge.Models.Facilities
         {
             var sesameSortedList = _seeds.Where(sesame => sesame.returnSeedType == "Sesame");
             Console.Write($"Sesame: {sesameSortedList.Count()}");
+
+            var sunflowerSortedList = _seeds.Where(sunFlower => sunFlower.returnSeedType == "Sunflowers");
+            Console.Write($"Sunflowers: {sunflowerSortedList.Count()}");
         }
     }
 }
